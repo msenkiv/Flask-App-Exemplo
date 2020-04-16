@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Switch;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -21,9 +22,11 @@ import org.json.JSONObject;
 
 public class NewConsoleActivity extends AppCompatActivity {
 
-    private EditText editName, editYear, editPrice;
+    private EditText editName, editYear, editPrice,editQuantity;
+    private Switch editActive;
     private long id;
     private Console console;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,6 +35,8 @@ public class NewConsoleActivity extends AppCompatActivity {
         editName = findViewById(R.id.editName);
         editYear = findViewById(R.id.editYear);
         editPrice = findViewById(R.id.editPrice);
+        editActive = findViewById(R.id.editActive);
+        editQuantity = findViewById(R.id.editQuantity);
 
         id = getIntent().getLongExtra("ID",0);
 
@@ -51,6 +56,9 @@ public class NewConsoleActivity extends AppCompatActivity {
                     console.setName(response.getString("name"));
                     console.setYear(response.getInt("year"));
                     console.setPrice(response.getDouble("price"));
+                    console.setActive(response.getBoolean("active"));
+                    console.setQuantity(response.getInt("quantity"));
+
 
                     editName.setText(console.getName());
                     editYear.setText(String.valueOf(console.getYear()));
@@ -76,6 +84,8 @@ public class NewConsoleActivity extends AppCompatActivity {
             object.put("name",editName.getText().toString());
             object.put("year",Integer.parseInt(editYear.getText().toString()));
             object.put("price",Double.parseDouble(editPrice.getText().toString()));
+            object.put("active",Boolean.parseBoolean(editActive.getText().toString()));
+            object.put("quantity",Integer.parseInt(editPrice.getText().toString()));
 
             JsonObjectRequest request = new JsonObjectRequest(method, url, object, new Response.Listener<JSONObject>() {
                 @Override

@@ -24,6 +24,20 @@
         android:hint="Preço"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
+
+    <EditText
+        android:id="@+id/editQuantity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Quantidade"
+        android:inputType="numberDecimal" />
+
+    <Switch
+        android:id="@+id/editActive"
+        android:layout_width="93dp"
+        android:layout_height="wrap_content"
+        android:text="Ativo" />
+
     <Button
         android:text="Salvar"
         android:onClick="saveConsole"

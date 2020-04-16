@@ -5,6 +5,8 @@ public class Console {
     private String name;
     private int year;
     private double price;
+    private Boolean active;
+    private int quantity;
 
     public Console() {
     }
@@ -41,6 +43,13 @@ public class Console {
         this.price = price;
     }
 
+    public Boolean getActive() {return active;}
+
+    public void setActive(Boolean active) {this.active = active; }
+
+    public int getQuantity() {return quantity;}
+
+    public void setQuantity(int quantity) {this.quantity = quantity;}
     @Override
     public String toString() {
         return name;
